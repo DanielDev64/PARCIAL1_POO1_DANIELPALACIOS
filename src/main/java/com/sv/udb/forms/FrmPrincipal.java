@@ -6,6 +6,9 @@
 package com.sv.udb.forms;
 
 import com.sv.udb.clases.ManejadorProductos;
+import com.sv.udb.clases.Productos;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -45,6 +48,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtExist = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lst1 = new javax.swing.JList<>();
@@ -89,37 +93,41 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jLabel8.setText("Existencias:");
 
+        jLabel9.setText("dd/mm/yyyy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtExist, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMin, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(txtFecha)))
-                            .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel9)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtExist, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtMin, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                        .addComponent(txtFecha)))
+                                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,7 +141,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtExist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,17 +153,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnIngresar)
                 .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados"));
 
+        lst1.setEnabled(false);
         jScrollPane1.setViewportView(lst1);
 
+        lst3.setEnabled(false);
         jScrollPane2.setViewportView(lst3);
 
+        lst2.setEnabled(false);
         jScrollPane3.setViewportView(lst2);
 
         jLabel5.setText("Top 3 Productos Caros");
@@ -236,30 +249,59 @@ public class FrmPrincipal extends javax.swing.JFrame {
             
             if(control.GuardarPro(nomb, precio, exist, min, fecha))
             {
-                JOptionPane.showMessageDialog(this, "Datos guardados", "POO1", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Datos guardados", "Exito", JOptionPane.INFORMATION_MESSAGE);
                 this.txtNombre.setText("");
                 this.txtPrecio.setText("");
                 this.txtExist.setText("");
                 this.txtMin.setText("");
                 this.txtFecha.setText("");
                 obtenerTop();
+                obtenerMinimo();
+                obtenerVenc();
             }
             else
             {
-                JOptionPane.showMessageDialog(this, "Error en sus datos, favor verifique", "POO1", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error en sus datos, favor verifique", "Error", JOptionPane.WARNING_MESSAGE);
             }
         }
         catch(Exception ex)
         {
-            JOptionPane.showMessageDialog(this, "Error al procesar", "POO1", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al procesar", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+    boolean formatoFecha(String fecha)
+    {
+        boolean resp = false;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+        return resp;
+    }
+    
     void obtenerTop()
     {    
         DefaultListModel modelo = new DefaultListModel(); 
+        for(Productos p : control.TopPro())
+            modelo.addElement(p);
         
         lst1.setModel(modelo);
+    }
+    void obtenerVenc()
+    {
+        DefaultListModel modelo = new DefaultListModel(); 
+        for(Productos p : control.FechaVec())
+            modelo.addElement(p);
+        
+        lst2.setModel(modelo);
+    }
+    void obtenerMinimo()
+    {
+        DefaultListModel modelo = new DefaultListModel(); 
+        for(Productos min : control.MinExist())
+        {
+            modelo.addElement(min);
+        }
+        lst3.setModel(modelo);
     }
     /**
      * @param args the command line arguments
@@ -306,6 +348,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -5,7 +5,11 @@
  */
 package com.sv.udb.clases;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,26 +37,61 @@ public class ManejadorProductos {
         return resp;
     }
     
-//    public List<> TopPro()
-//    {
-//        List<Productos> lstTemp = new ArrayList<>();
-//        
-//        try
-//        {
-//            for(Productos precio: this.pro)
-//            {
-//              
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//        return topn;
-//    }
+    public List<Productos> TopPro()
+    {
+        List<Productos> lstTemp = new ArrayList<>();
+        try
+        {
+            pro.sort(Comparator.comparing(Productos::getPrecio).reversed());
+            for(int i = 0; i < pro.size(); i++){
+                if(i < 3)
+                {
+                    lstTemp.add(pro.get(i));
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return lstTemp;
+    }
     
-//    public List<Productos> consTodo()
-//    {
-//        return this.pro;
-//    }
+    public List<Productos> FechaVec()
+    {
+        List<Productos> lstTemp = new ArrayList<>();
+        try
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            lstTemp.add(pro.get(0));
+            for(Productos p : this.pro){
+                Date fecha1 = sdf.parse(lstTemp.get(0).getFecha());
+                Date fecha2 = sdf.parse(p.getFecha());
+                if(fecha2.before(fecha1))
+                {
+                    lstTemp.clear();
+                    lstTemp.add(p);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return lstTemp;
+    }
+    
+    public List<Productos> MinExist()
+    {
+        
+        List<Productos> lstTemp = new ArrayList<>();
+        for(Productos cantidad : this.pro)
+        {
+            if(cantidad.getExist() == cantidad.getMin())
+            {
+                lstTemp.add(cantidad);
+            }
+        }
+        return lstTemp;
+    }
 }
